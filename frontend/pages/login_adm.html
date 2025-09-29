@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Página de login</title>
+  </head>
+  <body class="login-body">
+    <section class="s-login">
+      <main>
+        <div id="custom-modal" class="custom-modal">
+          <div class="custom-modal-content">
+            <span id="custom-modal-icon"></span>
+            <p id="custom-modal-message"></p>
+            <button class="custom-modal-close"></button>
+          </div>
+        </div>
+        <!-- Logo e Título acima do login -->
+        <div class="logo-container">
+          <img src="../images/Logo.png" alt="Logo Mesa Mestre" class="logo" />
+          <h1 class="logo-title">Mesa Mestre</h1>
+        </div>
+
+        <!-- Container do Login -->
+        <div class="login-container">
+          <div class="login-box">
+            <div class="login-header">
+              <h1>Entrar</h1>
+            </div>
+            <div class="login-form">
+              <div class="input-group">
+                <label for="email">E-mail</label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="E-mail"
+                />
+              </div>
+              <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Senha" />
+              </div>
+              <div class="login-footer">
+                <!-- <p>Esqueceu a senha?<a href="#"> Recupere aqui</a></p> -->
+              </div>
+              <button id="btn-login" class="login-button">Entrar</button>
+              <a href="../index.html" class="inicio-thank-you-button" style="background-color: tomato; border-radius: 30px; width: 100%;">Voltar à Página Inicial</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+    <script type="module" src="../js/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,332 @@
+// Variáveis
+$cor-primaria: #ff6347;
+$cor-secundaria: #e5533d;
+$cor-texto: #333;
+$cor-borda: #ddd;
+$cor-fundo: #f8f9fa;
+$cor-hover: #f1f1f1;
+
+/* ====================================================================================== */
+/* Parte de funcionários */
+.funcionarios-table-container {
+  margin-top: 20px;
+  transition: margin-right 0.3s ease;
+  overflow: hidden; // Importante para conter a tabela rolável
+  height: calc(100vh - 200px); // Ajuste conforme necessário
+  position: relative;
+
+  .funcionarios-table-wrapper {
+    overflow-y: auto;
+    max-height: 100%;
+    position: relative;
+
+    // Estilo da barra de rolagem
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $cor-primaria;
+      border-radius: 4px;
+
+      &:hover {
+        background: $cor-secundaria;
+      }
+    }
+  }
+
+  .funcionarios-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid $cor-borda;
+    }
+
+    th {
+      background-color: $cor-fundo;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    tbody tr:hover {
+      background-color: $cor-hover;
+      cursor: pointer;
+    }
+
+    // Colunas específicas
+    .nome-column {
+      width: 20%;
+    }
+
+    .email-column {
+      width: 25%;
+    }
+
+    .telefone-column {
+      width: 30%;
+    }
+
+    .data-column {
+      width: 15%;
+    }
+
+    .funcao-column {
+      width: 15%;
+    }
+
+    .opcoes-column {
+      width: 5%;
+      text-align: center;
+    }
+  }
+}
+
+// Formulário de funcionário
+.funcionario-form-container {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  &.aberto {
+    width: 400px;
+  }
+
+  .form-content {
+    padding: 20px;
+
+    .form-group {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid $cor-borda;
+        border-radius: 4px;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+  }
+
+  .form-title {
+    background-color: $cor-primaria;
+    padding: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+// Botões
+.btn-salvar,
+.btn-adicionar-funcionario {
+  background-color: $cor-primaria;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: $cor-secundaria;
+  }
+}
+
+.btn-cancelar {
+  background-color: #ccc;
+  color: $cor-texto;
+  padding: 10px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #bbb;
+  }
+}
+
+// Status
+.status-ativo {
+  color: green;
+  font-weight: bold;
+}
+
+.status-inativo {
+  color: red;
+  font-weight: bold;
+}
+
+// Modal de edição
+#editar-funcionario-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 40%;
+  top: 15%;
+
+  .custom-modal-content {
+    display: block;
+    background-color: #fff;
+    padding: 0;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease;
+
+    .form-content {
+      padding: 20px;
+
+      .form-group {
+        margin-bottom: 15px;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: 600;
+        }
+
+        input {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid $cor-borda;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .flex span {
+      color: #fff;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
+
+// Pesquisa
+.conteudo-funcionarios .esquerda-funcionarios .pesquisa {
+  justify-content: space-between;
+}
+
+#search-button-func {
+  cursor: pointer;
+}
+
+/* ====================================================================================== */
+/* ESTILOS ESPECÍFICOS PARA SELECTS DA TELA DE FUNCIONÁRIOS */
+.func-select {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 1px solid $cor-borda;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: $cor-texto;
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  &:focus {
+    outline: none;
+    border-color: $cor-primaria;
+    box-shadow: 0 0 0 2px rgba($cor-primaria, 0.2);
+  }
+
+  &:hover {
+    border-color: darken($cor-borda, 10%);
+  }
+}
+
+/* Container para selects com ícone personalizado */
+.func-select-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $cor-texto;
+    pointer-events: none;
+  }
+}
+
+/* Estilo para options dentro dos selects de funcionários */
+.func-select option {
+  padding: 0.5rem;
+  background-color: white;
+  color: $cor-texto;
+
+  &:checked {
+    background-color: lighten($cor-primaria, 40%);
+    color: darken($cor-primaria, 10%);
+  }
+
+  &:hover {
+    background-color: $cor-hover !important;
+  }
+}
+
+/* Estilos específicos para o formulário de funcionário */
+.funcionario-form-container {
+  .func-select {
+    border-radius: 8px;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($cor-primaria, 0.1);
+    }
+  }
+}
+
+/* Estilos específicos para o modal de edição */
+#editar-funcionario-modal {
+  .func-select {
+    border-radius: 8px;
+    transition: all 0.2s;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($cor-primaria, 0.1);
+    }
+  }
+}
